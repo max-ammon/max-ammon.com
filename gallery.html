@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylesheet.css">
+    <title>Document</title>
+</head>
+<body>
+    <nav>
+        <div style="display:inline-flex; gap:200px" class="headerbox">
+            <h1 style="font-family:pixar_regular;font-size:4em;padding-top:5px;" class="nopadding title"><a style="text-decoration:none;" class="title"  href="index.html">Max Ammon</a></h1>
+            <h1 style="font-family:uni_light_italic;font-size:3em"  class="nopadding secondarytitle">3D Artist</h1>
+        </div>
+    </nav>
+
+<section>
+    <div>
+        <h2 style="width:100%;text-align:center;font-family:uni_light;font-size:4em;padding-top: 50px;" class="nopadding">Gallery</h2>
+        <p style="font-weight: bolder;text-align: center;" class="nopadding">In this gallery you will find concepts, unfinished and finished projects, both older and current.</p>
+        
+        <div id="projects" style="padding-top: 3%;">
+            <div>
+                <div style="display: flex; justify-content: space-around;max-width: 95%;margin-left:auto;margin-right: auto;">
+                    <div style="display: flex;">
+                        <img src="assets/images/gallery/gallery_projects_0.png" style="max-width: 45%;">
+                        <div style="padding-left: 2%;">
+                            <h3 class="nopadding">Project0</h3>
+                            <h4 class="nopadding">2017</h4>
+                            <p style="text-align: left;padding-top: 5%;" class="nopadding">Dies ist die Beschreibung für ein potennzielles Projekt<br>welches noch nicht ausgewählt ist. In dieser<br>Beschreibung bechreibe ich das Projekt. Somit habe ich das Projekt berschrieben</p>
+                        </div>
+                    </div>
+
+                    <div style="display: flex;">
+                        <button id="videoButton" style="background: none; border: none; padding: 0; cursor: pointer; display: inline-block;" alt="Play Video"><img src="assets/images/gallery/the_growing_floor_preview.gif" style="max-width: 100%;"></button>
+                        <!-- Popup Modal (Hidden by Default) -->
+                        <div id="videoModal" class="modal">
+                            <div class="modal-content">
+                                <span class="close">&times;</span>
+                                <video id="popupVideo" width="600" controls>
+                                    <source src="assets/images/gallery/the_growing_floor.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                        </div>
+
+                        <!-- CSS -->
+                        <style>
+                            /* Modal Background (Initially Hidden) */
+                            .modal {
+                                display: none; /* Hidden by default */
+                                position: fixed;
+                                z-index: 1000;
+                                left: 0;
+                                top: 0;
+                                width: 100%;
+                                height: 100%;
+                                background-color: rgba(0, 0, 0, 0.8);
+                                justify-content: center;
+                                align-items: center;
+                            }
+
+                            /* Modal Content */
+                            .modal-content {
+                                position: relative;
+                                background: #fff;
+                                padding: 20px;
+                                border-radius: 10px;
+                                text-align: center;
+                                max-width: 90%;
+                                max-height: 90%;
+                            }
+
+                            /* Close Button */
+                            .close {
+                                position: absolute;
+                                top: 10px;
+                                right: 15px;
+                                font-size: 25px;
+                                cursor: pointer;
+                            }
+
+                            /* Fixing GIF button layout */
+                            #videoButton img {
+                                display: block;
+                                margin: 0 auto; /* Center the image */
+                            }
+                        </style>
+
+                        <!-- JavaScript -->
+                        <script>
+                            document.addEventListener("DOMContentLoaded", function () {
+                                let modal = document.getElementById("videoModal");
+                                let video = document.getElementById("popupVideo");
+                                let videoButton = document.getElementById("videoButton");
+                                let closeButton = document.querySelector(".close");
+
+                                // Ensure the popup is hidden initially when the page loads
+                                modal.style.display = "none";
+
+                                // Open the popup when clicking the GIF button
+                                videoButton.addEventListener("click", function (event) {
+                                    event.preventDefault(); // Prevent any default action
+                                    modal.style.display = "flex"; // Show the modal
+                                    document.body.style.overflow = "hidden"; // Disable scrolling
+                                    video.play(); // Play the video
+                                });
+
+                                // Close the popup when clicking "X"
+                                closeButton.addEventListener("click", function () {
+                                    closePopup();
+                                });
+
+                                // Close the popup if clicking outside of the video area
+                                modal.addEventListener("click", function (event) {
+                                    if (event.target === modal) {
+                                        closePopup();
+                                    }
+                                });
+
+                                // Function to close the popup and reset the video
+                                function closePopup() {
+                                    modal.style.display = "none"; // Hide the modal
+                                    document.body.style.overflow = ""; // Enable scrolling
+                                    video.pause(); // Stop the video
+                                    video.currentTime = 0; // Reset the video to the beginning
+                                }
+                            });
+                        </script>
+                        <div style="padding-left: 2%;">
+                            <h3 class="nopadding">The Growing Floor</h3>
+                            <h4 class="nopadding">2022</h4>
+                            <p style="text-align: left;padding-top: 5%;" class="nopadding">This is a motion-graphics concept, which a didn't pursue further. What your seing is not a rendered image, instead just a capture of the viewport of the 3D-software.</p>
+                        </div>
+                    </div>
+                    
+                    <div style="display: flex;">
+                        <img src="assets/images/gallery/gallery_projects_0.png" style="max-width: 45%;">
+                        <div style="padding-left: 2%;">
+                            <h3 class="nopadding">Project2</h3>
+                            <h4 class="nopadding">2020</h4>
+                            <p style="text-align: left;padding-top: 5%;" class="nopadding">Dies ist die Beschreibung für ein potennzielles Projekt<br>welches noch nicht ausgewählt ist. In dieser<br>Beschreibung bechreibe ich das Projekt. Somit habe ich das Projekt berschrieben</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    </div>
+</section>
+
+</body>
+</html>

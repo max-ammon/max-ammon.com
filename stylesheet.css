@@ -1,0 +1,202 @@
+<style>
+        @font-face {
+            font-family: 'uni_regular';
+            src: url('assets/fonts/Uni Sans Regular.otf') format('opentype'); 
+        }
+
+        @font-face {
+            font-family: 'pixar_regular';
+            src: url('assets/fonts/Charlemagne-Bold.ttf') format('opentype'); 
+        }
+
+        @font-face {
+            font-family: 'uni_italic';
+            src: url('assets/fonts/Uni Sans Italic.otf') format('opentype'); 
+        }
+
+        @font-face {
+            font-family: 'uni_light';
+            src: url('assets/fonts/Uni Sans Light.otf') format('opentype'); 
+        }
+
+        @font-face {
+            font-family: 'uni_light_italic';
+            src: url('assets/fonts/Uni Sans Light Italic.otf') format('opentype');
+        }
+
+        nav {
+            position:sticky;
+            display: flex; /* 1 */
+            justify-content: space-between; /* 2 */
+            padding: 1rem 2rem; /* 3 */
+            background-color: var(--headercolor);
+            height:relative;
+            transition: all 0.3s ease-in-out;
+
+        }
+
+        nav.scrolled {
+            padding: 10px;
+            background-color: var(--headercolor1);
+        }
+
+        nav .title {
+            font-size: 1em;
+        }
+
+        nav .secondarytitle {
+            font-size: 1em;
+        }
+
+        nav ul {
+            display: flex; /* 5 */
+            list-style: none; /* 6 */
+        }
+        
+        nav li {
+            padding-left: 3rem; /* 7! */
+        }
+
+        li a {
+            text-decoration:none;
+            color:var(--lightcolor);
+        }
+
+        li a:hover {
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+        }
+        
+        .headerbox {
+            display: flex;
+            align-items: center;  /* Centers vertically */
+            justify-content: center; /* Centers horizontally (optional) */
+            height: auto; /* Adjust as needed */
+            border: 1px solid rgba(0, 0, 0, 0);
+        }
+
+        .demobox {
+            position: relative;
+            width: 100%;
+        }
+
+        .demobox img {
+            width:100%;
+            height:auto;
+            display:block;
+        }
+
+        .playbutton-svg {
+            width:5%;
+            position:absolute;
+            top:50%;
+            left:50%;
+            transform: translate(-40%, -50%);
+        }
+
+        .playbutton-svg:hover {
+            filter: drop-shadow(0 0 7px rgb(150, 255, 255));
+        }
+
+        .modelingbox {
+            position: relative;
+            width: auto;
+        }
+
+        .modelingbox img {
+            width:auto;
+            height:auto;
+            display:block;
+        }
+
+        .modelingtext {
+            position:absolute;
+            top:10%;
+            left: 30%;
+        }
+
+        .texturingimage {
+            width: 100%;
+            max-width: 100%;
+        }
+        
+        .texturingtext {
+            position:relative;
+            left: 30%;
+            max-width: 40%;
+        }
+
+        .animationimage {
+            position: relative;
+            width: 50%;
+        }
+
+        .animationtext {
+            position:absolute;
+            left: 30%;
+            padding-top: 3%;
+            max-width: 40%;
+        }
+
+        .gradingimage {
+            position: relative;
+            width: 42%;
+            padding-left: 3%;
+        }
+
+        .gradingtext {
+            padding-left:3%;
+            max-width: 40%;
+        }
+
+        #projects p {
+            font-family: bolder;
+        }
+        
+        body {
+            font-family: 'uni_regular', sans-serif;
+            margin:0px;
+            padding:0px;
+            background-color:var(--basecolor);
+        }
+
+        .nopadding {
+            margin:0px;
+            padding:0px;
+        }
+
+        .padding {
+            padding:1px;
+        }
+
+        .title {
+            color:var(--titlecolor);
+        }
+
+        .secondarytitle {
+            color:var(--secondarycolor);
+        }
+
+        .lighttitle {
+            color:var(--lightcolor);
+        }
+
+        .barrior {
+            width:100%;
+            height: 25px;
+            background-color:var(--headercolor);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --basecolor: #5a5a5a;
+            --headercolor: #424242;
+            --headercolor1: #42424273;
+            --titlecolor: #000000;
+            --secondarycolor: #262626;
+            --lightcolor: #8b8b8b;
+        }
+
+    </style>
