@@ -148,8 +148,17 @@
             max-width: 40%;
         }
 
+        #projects h3 {
+            color:var(--lightcolor);
+        }
+        
+        #projects h4 {
+            color:var(--titlecolor);
+        }
+
         #projects p {
             font-family: bolder;
+            color:var(--secondarycolor1);
         }
         
         body {
