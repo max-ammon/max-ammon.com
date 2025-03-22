@@ -74,7 +74,16 @@
                     </div>
 
                     <div style="display: flex;">
-                        <img src="assets/images/gallery/mbquart_speaker.png" style="max-width: 35%;align-self:flex-start;">
+                        <div class="Gallery">
+                            <img class="gallery-image" src="assets/images/gallery/mbquart_speaker.png" data-full="assets/images/gallery/mbquart_speaker.png" alt="Photo 1" style="max-width: auto;align-self:flex-start;">
+                        </div>
+                        <div id="photoModal" class="photoModal">
+                            <span class="close">&times;</span>
+                            <img id="modalImage" class="modal-content1">
+                            <a class="prev">&#10094;</a>
+                            <a class="next">&#10095;</a>
+                        </div>
+                        <script src="assets/scripts/photoViewer.js"></script>
                         <div style="padding-left: 2%;">
                             <h3 class="nopadding">mbQuart HiFi Speaker</h3>
                             <h4 class="nopadding">2019</h4>
