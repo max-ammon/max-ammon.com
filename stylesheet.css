@@ -210,6 +210,14 @@
             transition: transform 0.2s;
         }
 
+        .gallery-image1 {
+            width:500px; /* Thumbnail size */
+            cursor: pointer;
+            border-radius: 1px;
+            transition: transform 0.2s;
+        }
+
+        
         .gallery-item img:not(:first-child) {
             position: absolute;
             width: 0;
@@ -235,9 +243,27 @@
             align-items: center;
         }
         
-        .modal img {
-            max-width: 90%;
-            max-height: 90%;
+        /* Modal image - will be set by JS dynamically */
+        .modal1 img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain; /* Ensures the image is fully visible, no cropping */
+        }
+
+        /* When screen is Full HD or lower */
+        @media (max-width: 1920px) {
+            .modal img {
+                width: 100%; /* Scale to fit the width */
+                height: auto;
+            }
+        }
+
+        /* When screen is larger (4K or above) */
+        @media (min-width: 1921px) {
+            .modal img {
+                width: auto; /* Preserve original image size */
+                height: auto;
+            }
         }
         
         .close {
@@ -247,6 +273,7 @@
             font-size: 30px;
             color: white;
             cursor: pointer;
+            z-index: 1002; /* Make sure it's on top of other content */
         }
         
         .prev, .next {

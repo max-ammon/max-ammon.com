@@ -40,8 +40,34 @@ document.addEventListener("DOMContentLoaded", function () {
         document.body.style.overflow = ""; // Enable scrolling
     }
 
-    // Close modal when clicking X
-    closeBtn.addEventListener("click", closeModal);
+    function adjustImageSize() {
+        let screenWidth = window.innerWidth;
+    
+        // For small screens (Full HD or below), scale image to fit
+        if (screenWidth <= 1920) {
+            modalImage.style.width = "100%";
+            modalImage.style.height = "auto";
+        } else {
+            modalImage.style.width = "auto"; // Keep real scale
+            modalImage.style.height = "auto";
+        }
+    }
+
+    function openModal(index) {
+        if (imageList.length > 0) {
+            modalImage.src = imageList[index]; // Load full-size image
+            modal.style.display = "flex"; // Show modal
+            document.body.style.overflow = "hidden"; // Disable scrolling
+    
+            // Adjust image size after opening the modal
+            adjustImageSize();
+        }
+    }
+
+    closeBtn.addEventListener("click", function () {
+        modal.style.display = "none"; // Hide modal
+        document.body.style.overflow = ""; // Re-enable body scroll
+    });
 
     // Navigate to previous image
     prevBtn.addEventListener("click", function () {
@@ -58,7 +84,8 @@ document.addEventListener("DOMContentLoaded", function () {
     // Close modal when clicking outside of the image
     modal.addEventListener("click", function (event) {
         if (event.target === modal) {
-            closeModal();
+            modal.style.display = "none"; // Hide modal
+            document.body.style.overflow = ""; // Re-enable body scroll
         }
     });
 
