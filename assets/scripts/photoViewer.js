@@ -1,61 +1,67 @@
 document.addEventListener("DOMContentLoaded", function () {
-    let images = document.querySelectorAll(".gallery-image");
     let modal = document.getElementById("photoModal");
     let modalImage = document.getElementById("modalImage");
-    let closeButton = document.querySelector(".close");
-    let prevButton = document.querySelector(".prev");
-    let nextButton = document.querySelector(".next");
-
+    let galleryImages = document.querySelectorAll(".gallery-image");
+    let closeBtn = document.querySelector(".close");
+    let prevBtn = document.querySelector(".prev");
+    let nextBtn = document.querySelector(".next");
     let currentIndex = 0;
-    let imageArray = [];
+    let imageList = [];
 
-    // Store images in an array for navigation
-    images.forEach((img, index) => {
-        imageArray.push(img.getAttribute("data-full"));
+    // Gather all data-full images into an array
+    galleryImages.forEach((img, index) => {
+        let fullSrc = img.getAttribute("data-full");
+        if (fullSrc) {
+            imageList.push(fullSrc); // Store full image path
+            img.dataset.index = imageList.length - 1; // Store index for click event
+        }
+
+        // Attach click event to open lightbox
         img.addEventListener("click", function () {
-            currentIndex = index;
-            openModal(imageArray[currentIndex]);
+            currentIndex = parseInt(img.dataset.index); // Get correct index
+            openModal(currentIndex);
         });
     });
 
-    function openModal(imageSrc) {
-        modalImage.src = imageSrc;
-        modal.style.display = "flex";
-        document.body.style.overflow = "hidden"; // Disable scrolling
+    function openModal(index) {
+        if (imageList.length > 0) {
+            modalImage.src = imageList[index]; // Load full-size image
+            modal.style.display = "flex"; // Show modal
+            document.body.style.overflow = "hidden"; // Disable scrolling
+        }
     }
 
     function closeModal() {
-        modal.style.display = "none";
+        modal.style.display = "none"; // Hide modal
         document.body.style.overflow = ""; // Enable scrolling
     }
 
-    function showPrevImage() {
-        currentIndex = (currentIndex - 1 + imageArray.length) % imageArray.length;
-        modalImage.src = imageArray[currentIndex];
-    }
+    // Close modal when clicking X
+    closeBtn.addEventListener("click", closeModal);
 
-    function showNextImage() {
-        currentIndex = (currentIndex + 1) % imageArray.length;
-        modalImage.src = imageArray[currentIndex];
-    }
+    // Navigate to previous image
+    prevBtn.addEventListener("click", function () {
+        currentIndex = (currentIndex - 1 + imageList.length) % imageList.length;
+        modalImage.src = imageList[currentIndex];
+    });
 
-    // Event Listeners
-    closeButton.addEventListener("click", closeModal);
-    prevButton.addEventListener("click", showPrevImage);
-    nextButton.addEventListener("click", showNextImage);
+    // Navigate to next image
+    nextBtn.addEventListener("click", function () {
+        currentIndex = (currentIndex + 1) % imageList.length;
+        modalImage.src = imageList[currentIndex];
+    });
 
+    // Close modal when clicking outside of the image
     modal.addEventListener("click", function (event) {
         if (event.target === modal) {
             closeModal();
         }
     });
 
-    // Keyboard Controls
+    // Close modal on Escape key
     document.addEventListener("keydown", function (event) {
-        if (modal.style.display === "flex") {
-            if (event.key === "ArrowLeft") showPrevImage();
-            if (event.key === "ArrowRight") showNextImage();
-            if (event.key === "Escape") closeModal();
+        if (event.key === "Escape") {
+            closeModal();
         }
     });
 });

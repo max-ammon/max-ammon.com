@@ -208,10 +208,17 @@
         }
 
         .gallery-image {
-            width: 20%; /* Thumbnail size */
+            width:300px; /* Thumbnail size */
             cursor: pointer;
             border-radius: 1px;
             transition: transform 0.2s;
+        }
+
+        .gallery-item img:not(:first-child) {
+            position: absolute;
+            width: 0;
+            height: 0;
+            overflow: hidden;
         }
 
         .gallery-image:hover {
@@ -219,8 +226,8 @@
         }
 
         /* Photo Viewer (Modal) */
-        .photoModal {
-            display: none;
+        .modal1 {
+            display: none; /* Hidden by default */
             position: fixed;
             z-index: 1000;
             left: 0;
@@ -230,41 +237,36 @@
             background-color: rgba(0, 0, 0, 0.8);
             justify-content: center;
             align-items: center;
-            text-align: center;
         }
-
-        .modal-content1 {
-            max-width: 80%;
-            max-height: 80%;
-            border-radius: 10px;
+        
+        .modal img {
+            max-width: 90%;
+            max-height: 90%;
         }
-
-        /* Close Button */
+        
         .close {
             position: absolute;
             top: 10px;
-            right: 15px;
+            right: 20px;
             font-size: 30px;
             color: white;
             cursor: pointer;
         }
-
-        /* Navigation Arrows */
+        
         .prev, .next {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
             font-size: 30px;
-            color: white;
-            cursor: pointer;
+            background: rgba(255, 255, 255, 0.5);
+            border: none;
             padding: 10px;
-            user-select: none;
+            cursor: pointer;
         }
-
-        .prev { left: 5%; }
-        .next { right: 5%; }
-        .prev:hover, .next:hover { color: #f1f1f1; }
         
+        .prev { left: 10px; }
+        .next { right: 10px; }
+
         body {
             font-family: 'uni_regular', sans-serif;
             margin:0px;

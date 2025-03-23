@@ -32,19 +32,19 @@
                     </div>
 
                     <div style="display: flex;">
-                        <button class="videoButton" data-video="assets/images/gallery/the_growing_floor.mp4" style="background: none; border: none;padding: 0;display:flex">
-                            <img src="assets/images/gallery/the_growing_floor_preview.gif" style="max-width: 100%;align-self:flex-start;">
-                        </button>
-                        <div id="videoModal" class="modal">
-                            <div class="modal-content">
-                                <span class="close">&times;</span>
-                                <video id="popupVideo" width="600" controls>
-                                    <source id="videoSource" src="" type="video/mp4">
-                                    Your browser does not support the video tag.
-                                </video>
+                            <button class="videoButton" data-video="assets/images/gallery/the_growing_floor.mp4" style="background: none; border: none;padding: 0;display:flex">
+                                <img src="assets/images/gallery/the_growing_floor_preview.gif" style="max-width: 100%;align-self:flex-start;">
+                            </button>
+                            <div id="videoModal" class="modal">
+                                <div class="modal-content">
+                                    <span class="close">&times;</span>
+                                    <video id="popupVideo" width="600" controls>
+                                        <source id="videoSource" src="" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                </div>
                             </div>
-                        </div>
-                        <!-- Include JavaScript in an External File -->
+                            <!-- Include JavaScript in an External File -->
                         <script src="assets/scripts/videoPopup.js"></script>
                         <div style="padding-left: 2%;">
                             <h3 class="nopadding">The Growing Floor</h3>
@@ -74,14 +74,15 @@
                     </div>
 
                     <div style="display: flex;">
-                        <div class="Gallery">
-                            <img class="gallery-image" src="assets/images/gallery/mbquart_speaker.png" data-full="assets/images/gallery/mbquart_speaker.png" alt="Photo 1" style="max-width: auto;align-self:flex-start;">
+                        <div class="gallery-item">
+                            <img class="gallery-image" src="assets/images/gallery/mbquart_speaker.png" data-full="assets/images/gallery/mbquart_speaker.png" style="max-width: auto;align-self:flex-start;">
+                            <img class="gallery-image" data-full="assets/images/gallery/gallery_projects_0" style="max-width: auto;align-self:flex-start;">
                         </div>
-                        <div id="photoModal" class="photoModal">
+                        <div id="photoModal" class="modal1">
                             <span class="close">&times;</span>
-                            <img id="modalImage" class="modal-content1">
-                            <a class="prev">&#10094;</a>
-                            <a class="next">&#10095;</a>
+                            <img id="modalImage" src="" alt="Expanded View">
+                            <button class="prev">&lt;</button>
+                            <button class="next">&gt;</button>
                         </div>
                         <script src="assets/scripts/photoViewer.js"></script>
                         <div style="padding-left: 2%;">
@@ -91,14 +92,7 @@
                         </div>
                     </div>
                     
-                    <div style="display: flex;">
-                        <img src="assets/images/gallery/gallery_projects_0.png" style="max-width: 45%;">
-                        <div style="padding-left: 2%;">
-                            <h3 class="nopadding">Project2</h3>
-                            <h4 class="nopadding">2020</h4>
-                            <p style="text-align: left;padding-top: 5%;" class="nopadding">Dies ist die Beschreibung für ein potennzielles Projekt<br>welches noch nicht ausgewählt ist. In dieser<br>Beschreibung bechreibe ich das Projekt. Somit habe ich das Projekt berschrieben</p>
-                        </div>
-                    </div>
+                    
                 </div>
 
             </div>
