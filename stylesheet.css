@@ -203,10 +203,6 @@
             gap: 10px;
         }
 
-        .gallery img:not([src]) {
-            display: none;
-        }
-
         .gallery-image {
             width:300px; /* Thumbnail size */
             cursor: pointer;

@@ -31,6 +31,10 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
+    galleryImages.forEach((img, index) => {
+        console.log("Image detected:", img, "Data-full:", img.getAttribute("data-full"));
+    });
+
     function closeModal() {
         modal.style.display = "none"; // Hide modal
         document.body.style.overflow = ""; // Enable scrolling
