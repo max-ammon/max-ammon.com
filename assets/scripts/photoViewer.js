@@ -1,98 +1,58 @@
 document.addEventListener("DOMContentLoaded", function () {
     let modal = document.getElementById("photoModal");
     let modalImage = document.getElementById("modalImage");
-    let galleryImages = document.querySelectorAll(".gallery-image");
     let closeBtn = document.querySelector(".close");
-    let prevBtn = document.querySelector(".prev");
-    let nextBtn = document.querySelector(".next");
-    let currentIndex = 0;
     let imageList = [];
+    let currentGroup = ""; // Track the current parent image group
 
-    // Gather all data-full images into an array
-    galleryImages.forEach((img, index) => {
-        let fullSrc = img.getAttribute("data-full");
-        if (fullSrc) {
-            imageList.push(fullSrc); // Store full image path
-            img.dataset.index = imageList.length - 1; // Store index for click event
-        }
+    // Function to open the modal
+    function openModal(index, group) {
+        modal.style.display = "flex"; // Show modal
+        document.body.style.overflow = "hidden"; // Disable scrolling
 
-        // Attach click event to open lightbox
-        img.addEventListener("click", function () {
-            currentIndex = parseInt(img.dataset.index); // Get correct index
-            openModal(currentIndex);
-        });
+        currentGroup = group; // Store the current group of images
+        imageList = document.querySelectorAll(`.${group} .gallery-image`); // Get all images in this group
+        modalImage.src = imageList[index].dataset.full; // Set the current image source
+    }
+
+    // Cycle through images (for the current parent image group)
+    let currentIndex = 0;
+    document.querySelector(".next").addEventListener("click", function () {
+        currentIndex = (currentIndex + 1) % imageList.length;
+        modalImage.src = imageList[currentIndex].dataset.full;
     });
 
-    function openModal(index) {
-        if (imageList.length > 0) {
-            modalImage.src = imageList[index]; // Load full-size image
-            modal.style.display = "flex"; // Show modal
-            document.body.style.overflow = "hidden"; // Disable scrolling
-        }
-    }
-
-    galleryImages.forEach((img, index) => {
-        console.log("Image detected:", img, "Data-full:", img.getAttribute("data-full"));
+    document.querySelector(".prev").addEventListener("click", function () {
+        currentIndex = (currentIndex - 1 + imageList.length) % imageList.length;
+        modalImage.src = imageList[currentIndex].dataset.full;
     });
 
-    function closeModal() {
-        modal.style.display = "none"; // Hide modal
-        document.body.style.overflow = ""; // Enable scrolling
-    }
-
-    function adjustImageSize() {
-        let screenWidth = window.innerWidth;
-    
-        // For small screens (Full HD or below), scale image to fit
-        if (screenWidth <= 1920) {
-            modalImage.style.width = "100%";
-            modalImage.style.height = "auto";
-        } else {
-            modalImage.style.width = "auto"; // Keep real scale
-            modalImage.style.height = "auto";
-        }
-    }
-
-    function openModal(index) {
-        if (imageList.length > 0) {
-            modalImage.src = imageList[index]; // Load full-size image
-            modal.style.display = "flex"; // Show modal
-            document.body.style.overflow = "hidden"; // Disable scrolling
-    
-            // Adjust image size after opening the modal
-            adjustImageSize();
-        }
-    }
-
+    // Close the modal when clicking "X"
     closeBtn.addEventListener("click", function () {
         modal.style.display = "none"; // Hide modal
-        document.body.style.overflow = ""; // Re-enable body scroll
+        document.body.style.overflow = ""; // Re-enable scrolling
     });
 
-    // Navigate to previous image
-    prevBtn.addEventListener("click", function () {
-        currentIndex = (currentIndex - 1 + imageList.length) % imageList.length;
-        modalImage.src = imageList[currentIndex];
-    });
-
-    // Navigate to next image
-    nextBtn.addEventListener("click", function () {
-        currentIndex = (currentIndex + 1) % imageList.length;
-        modalImage.src = imageList[currentIndex];
-    });
-
-    // Close modal when clicking outside of the image
+    // Close the modal when clicking outside the image
     modal.addEventListener("click", function (event) {
         if (event.target === modal) {
             modal.style.display = "none"; // Hide modal
-            document.body.style.overflow = ""; // Re-enable body scroll
+            document.body.style.overflow = ""; // Re-enable scrolling
         }
     });
 
-    // Close modal on Escape key
-    document.addEventListener("keydown", function (event) {
-        if (event.key === "Escape") {
-            closeModal();
+    // Example: Open the modal when a parent image is clicked
+    document.querySelector(".parent-image-1").addEventListener("click", function (event) {
+        if (event.target.classList.contains("gallery-image")) {
+            let index = Array.from(event.target.parentNode.children).indexOf(event.target);
+            openModal(index, "parent-image-1"); // Open modal with images from this parent
+        }
+    });
+
+    document.querySelector(".parent-image-2").addEventListener("click", function (event) {
+        if (event.target.classList.contains("gallery-image")) {
+            let index = Array.from(event.target.parentNode.children).indexOf(event.target);
+            openModal(index, "parent-image-2"); // Open modal with images from this parent
         }
     });
 });

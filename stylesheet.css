@@ -204,20 +204,11 @@
         }
 
         .gallery-image {
-            width:300px; /* Thumbnail size */
             cursor: pointer;
             border-radius: 1px;
             transition: transform 0.2s;
         }
 
-        .gallery-image1 {
-            width:500px; /* Thumbnail size */
-            cursor: pointer;
-            border-radius: 1px;
-            transition: transform 0.2s;
-        }
-
-        
         .gallery-item img:not(:first-child) {
             position: absolute;
             width: 0;
@@ -227,6 +218,22 @@
 
         .gallery-image:hover {
             transform: scale(1.05);
+        }
+
+        .parent-image-1 {
+            cursor:pointer;
+        }
+
+        .parent-image-2 {
+            cursor:pointer;
+        }
+
+        .gallery-image1 {
+            width:300px; /* Thumbnail size */
+        }
+
+        .gallery-image2 {
+            width:475px; /* Thumbnail size */
         }
 
         /* Photo Viewer (Modal) */
@@ -245,8 +252,8 @@
         
         /* Modal image - will be set by JS dynamically */
         .modal1 img {
-            max-width: 100%;
-            max-height: 100%;
+            max-width: 95%;
+            max-height: 95%;
             object-fit: contain; /* Ensures the image is fully visible, no cropping */
         }
 
