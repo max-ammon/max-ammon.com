@@ -166,7 +166,7 @@
             position: fixed;
             z-index: 1000;
             left: 0;
-            top: 0;
+            top: 0%;
             width: 100%;
             height: 100%;
             background-color: rgba(0, 0, 0, 0.8);
@@ -195,6 +195,12 @@
         .videoButton img {
             display: block;
             margin: 0 auto;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .videoButton img:hover {
+            transform: scale(1.05);
+            cursor:pointer;
         }
 
         /* Gallery Styling */
@@ -228,12 +234,32 @@
             cursor:pointer;
         }
 
+        .parent-image-3 {
+            cursor:pointer;
+        }
+
+        .parent-image-4 {
+            cursor:pointer;
+        }
+
         .gallery-image1 {
             width:300px; /* Thumbnail size */
         }
 
         .gallery-image2 {
             width:475px; /* Thumbnail size */
+        }
+
+        .gallery-image3 {
+            width:300px; /* Thumbnail size */
+        }
+        
+        .gallery-image4 {
+            width:664px; /* Thumbnail size */
+        }
+
+        .gallery-image5 {
+            width:553px; /* Thumbnail size */
         }
 
         /* Photo Viewer (Modal) */

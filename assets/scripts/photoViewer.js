@@ -55,4 +55,27 @@ document.addEventListener("DOMContentLoaded", function () {
             openModal(index, "parent-image-2"); // Open modal with images from this parent
         }
     });
+
+    document.querySelector(".parent-image-3").addEventListener("click", function (event) {
+        if (event.target.classList.contains("gallery-image")) {
+            let index = Array.from(event.target.parentNode.children).indexOf(event.target);
+            openModal(index, "parent-image-3"); // Open modal with images from this parent
+        }
+    });
+
+    document.querySelector(".parent-image-4").addEventListener("click", function (event) {
+        if (event.target.classList.contains("gallery-image")) {
+            let index = Array.from(event.target.parentNode.children).indexOf(event.target);
+            openModal(index, "parent-image-4"); // Open modal with images from this parent
+        }
+    });
+
+    document.querySelector(".parent-image-5").addEventListener("click", function (event) {
+        if (event.target.classList.contains("gallery-image")) {
+            let index = Array.from(event.target.parentNode.children).indexOf(event.target);
+            openModal(index, "parent-image-5"); // Open modal with images from this parent
+        }
+    });
+
+
 });
