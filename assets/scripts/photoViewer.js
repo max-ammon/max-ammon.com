@@ -70,12 +70,5 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    document.querySelector(".parent-image-5").addEventListener("click", function (event) {
-        if (event.target.classList.contains("gallery-image")) {
-            let index = Array.from(event.target.parentNode.children).indexOf(event.target);
-            openModal(index, "parent-image-5"); // Open modal with images from this parent
-        }
-    });
-
 
 });

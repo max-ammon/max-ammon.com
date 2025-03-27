@@ -247,7 +247,7 @@
         }
 
         .gallery-image2 {
-            width:475px; /* Thumbnail size */
+            width:485px; /* Thumbnail size */
         }
 
         .gallery-image3 {
@@ -255,11 +255,7 @@
         }
         
         .gallery-image4 {
-            width:664px; /* Thumbnail size */
-        }
-
-        .gallery-image5 {
-            width:553px; /* Thumbnail size */
+            width:700px; /* Thumbnail size */
         }
 
         /* Photo Viewer (Modal) */
