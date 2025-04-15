@@ -1,35 +1,52 @@
 document.addEventListener("DOMContentLoaded", function () {
     let modal = document.getElementById("videoModal");
-    let video = document.getElementById("popupVideo");
-    let videoSource = document.getElementById("videoSource");
-    let closeButton = document.querySelector(".close");
+    let modalVideo = document.getElementById("modalVideo");
+    let modalVideoSource = document.getElementById("modalVideoSource");
+    let closeButton = document.querySelector(".close-video");
+    let fullscreenButton = document.querySelector(".fullscreen-video");
 
-    // Add click event to all buttons with class "videoButton"
-    document.querySelectorAll(".videoButton").forEach(button => {
-        button.addEventListener("click", function () {
-            let videoPath = this.getAttribute("data-video"); // Get the video path from the button
-            videoSource.src = videoPath;
-            video.load();
+    // Find all preview videos
+    document.querySelectorAll(".preview-video").forEach(preview => {
+        preview.addEventListener("click", function () {
+            let videoPath = this.getAttribute("data-main"); // Get the main video path
+            if (!videoPath) {
+                console.error("No video path found!");
+                return;
+            }
+
+            modalVideoSource.src = videoPath;
+            modalVideo.load();
             modal.style.display = "flex";
-            document.body.style.overflow = "hidden"; // Disable scrolling
-            video.play();
+            document.body.style.overflow = "hidden"; // Disable background scrolling
+            modalVideo.play();
         });
     });
 
-    // Close popup when clicking "X"
-    closeButton.addEventListener("click", closePopup);
+    // Close modal when clicking "X"
+    closeButton.addEventListener("click", closeModal);
 
-    // Close popup when clicking outside the video area
+    // Close modal when clicking outside the video area
     modal.addEventListener("click", function (event) {
         if (event.target === modal) {
-            closePopup();
+            closeModal();
         }
     });
 
-    function closePopup() {
+    function closeModal() {
         modal.style.display = "none";
         document.body.style.overflow = "";
-        video.pause();
-        video.currentTime = 0;
+        modalVideo.pause();
+        modalVideo.currentTime = 0; // Reset video time
     }
+
+    // Fullscreen button functionality
+    fullscreenButton.addEventListener("click", function () {
+        if (modalVideo.requestFullscreen) {
+            modalVideo.requestFullscreen();
+        } else if (modalVideo.webkitRequestFullscreen) { // Safari
+            modalVideo.webkitRequestFullscreen();
+        } else if (modalVideo.msRequestFullscreen) { // IE11
+            modalVideo.msRequestFullscreen();
+        }
+    });
 });
